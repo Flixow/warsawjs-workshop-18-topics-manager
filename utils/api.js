@@ -17,6 +17,10 @@ export default {
     fetchProfile: () => {
       setToken()
       return syncano.get('auth/getUser')
-    }
-  }
+    },
+  },
+  topics: {
+    create: data => syncano.post('topics/add', data),
+    fetch: () => syncano.post('topics/fetch'),
+  },
 }

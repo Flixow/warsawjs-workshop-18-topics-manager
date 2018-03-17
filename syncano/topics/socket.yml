@@ -1,0 +1,25 @@
+name: topics
+description: Description of topics
+version: 0.0.1
+
+classes:
+  topics:
+    - name: title
+      type: string
+    - name: treiners
+      type: array
+    - name: likes
+      type: integer
+
+endpoints:
+  add:
+    description: Add new topic!
+    file: add.js
+    parameters:
+      title:
+        type: string
+        description: "Title of th etopic"
+        example: "Typescript"
+  fetch:
+    description: Fetch list of topics!
+    file: fetch.js

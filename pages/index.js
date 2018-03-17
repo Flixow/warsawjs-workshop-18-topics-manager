@@ -3,10 +3,54 @@ import initStore from '../utils/store'
 
 import MainLayout from '../layouts/Main'
 
-const Home = () => (
-  <MainLayout>
+import {TopicCard, Input} from '../components'
 
-  </MainLayout>
-)
+import {createTopic} from '../actions/topics'
 
-export default withRedux(initStore)(Home)
+class Home extends React.PureComponent {
+  state = {
+    newTopicInput: ''
+  }
+
+  handleInputChange = evt => {
+    this.setState({newTopicInput: evt.target.value})
+  }
+
+  handleAddNewTopic = evt => {
+    evt.preventDefault()
+    this.props.createTopic({
+      title: this.state.newTopicInput,
+    })
+  }
+
+  render() {
+    const {topics} = this.props
+    const {newTopicInput} = this.state
+
+    return (
+      <MainLayout>
+        <form onSubmit={this.handleAddNewTopic}>
+          <Input
+            type="text"
+            placeholder="Dodaj nowy temat"
+            onChange={this.handleInputChange}
+          />
+          <button>Submit</button>
+        </form>
+
+        {topics.map(topic => (
+          <TopicCard
+            key={topic.id}
+            title={topic.title}
+          />
+        ))}
+      </MainLayout>
+    )
+  }
+}
+
+export default withRedux(initStore, ({topics}) => ({
+  topics: topics.list
+}), {
+  createTopic
+})(Home)
