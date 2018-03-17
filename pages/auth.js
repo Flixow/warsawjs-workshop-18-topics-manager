@@ -11,8 +11,7 @@ class Auth extends React.PureComponent {
     const search = href.substr(href.indexOf('?') + 1)
     const params = parse(search)
 
-    await this.props.authorize(params.code)
-    await this.props.fetchProfile()
+    this.props.authorize(params.code)
     Router.push('/')
   }
 

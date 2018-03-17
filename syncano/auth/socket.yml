@@ -1,0 +1,36 @@
+name: auth
+description: Description of auth
+version: 0.0.1
+
+
+classes:
+  user:
+    - name: avatar_url
+      type: string
+    - name: full_name
+      type: string
+    - name: email
+      type: string
+    - name: githubUrl
+      type: text
+
+endpoints:
+  login:
+    description: Login with GitHub!
+    file: login.js
+    parameters:
+      code:
+        type: string
+        description: "Code from GitHub response"
+        example: "120830192125"
+  fetchUserFromGithub:
+    description: Fetch user data from GitHub!
+    file: fetchUserFromGithub.js
+    parameters:
+      access_token:
+        type: string
+        description: "Access token for GitHub"
+        example: "dw23fm2f92mfolm2idwq"
+  getUser:
+    description: Fetch user data from GitHub!
+    file: getUser.js
