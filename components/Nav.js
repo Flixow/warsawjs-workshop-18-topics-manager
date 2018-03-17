@@ -11,7 +11,7 @@ const Nav = ({user}) => (
       </li>
       <ul>
         {user.id ? (
-          <h4>Witaj {user.name || user.login}!</h4>
+          <h4>Witaj {user.full_name}!</h4>
         ) : (
           <LoginWithGithubButton>
             Login with GitHub
