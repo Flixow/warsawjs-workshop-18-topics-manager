@@ -9,12 +9,14 @@ class MainLayout extends React.PureComponent {
   }
 
   render() {
-    const {userProfile} = this.props
+    const {userProfile, children} = this.props
 
     return (
       <div>
         <Head title="Home" />
         <Nav user={userProfile} />
+
+        {children}
       </div>
     );
   }
