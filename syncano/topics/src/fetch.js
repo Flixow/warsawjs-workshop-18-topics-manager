@@ -6,7 +6,7 @@ export default async (ctx) => {
   try {
     const topics = await data.topics.list()
 
-    response.json(topics)
+    response.json(topics.reverse())
   } catch (e) {
     response.json(e, 400)
   }

@@ -21,6 +21,7 @@ class Home extends React.PureComponent {
     this.props.createTopic({
       title: this.state.newTopicInput,
     })
+    this.setState({newTopicInput: ''})
   }
 
   render() {
@@ -34,6 +35,7 @@ class Home extends React.PureComponent {
             type="text"
             placeholder="Dodaj nowy temat"
             onChange={this.handleInputChange}
+            value={newTopicInput}
           />
           <button>Submit</button>
         </form>
