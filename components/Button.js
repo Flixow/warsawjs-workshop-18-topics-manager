@@ -9,8 +9,10 @@ const Button = ({children, ...other}) => (
 
     <style jsx>{`
       button {
-        background: ${cssVariables.colours.blue};
+        text-transform: uppercase;
+        background: ${cssVariables.colours.red};
         color: #fff;
+        padding: 5px 8px;
         border: none;
         cursor: pointer;
       }

@@ -1,4 +1,4 @@
-import React from 'react';
+import cssVariables from '../styles/cssVariables'
 
 const Card = ({title, children, Footer}) => (
   <div className='Card'>
@@ -16,12 +16,28 @@ const Card = ({title, children, Footer}) => (
       .Card {
         box-shadow: 0px 4px 6px 0px rgba(50,74,155,0.11);
         padding: 10px;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
       }
 
-      .Content,
+      h2 {
+        color: ${cssVariables.colours.red}
+      }
+
+      h2 {
+        border-bottom: 1px solid #9b9b9b;
+        margin-bottom: 0;
+      }
+
       footer {
         border-top: 1px solid #9b9b9b;
+      }
+
+      h2,
+      footer,
+      .Content {
         padding: 15px;
       }
 

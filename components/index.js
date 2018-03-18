@@ -5,6 +5,7 @@ import LoginWithGithubButton from './LoginWithGithubButton'
 import Card from './Card'
 import TopicCard from './TopicCard'
 import Input from './Input'
+import Wrapper from './Wrapper'
 
 export {
   Nav,
@@ -15,4 +16,5 @@ export {
   Card,
   TopicCard,
   Input,
+  Wrapper,
 }

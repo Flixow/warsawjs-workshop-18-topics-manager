@@ -18,12 +18,16 @@ const TopicCard = ({topic, likeIt, setMeAsTrainer, canIBeTrainer}) => (
     )}
   >
     <ul>
-      {topic.trainers.map((trainer, idx) => (
-        <li key={idx}>
-          <img src={trainer.avatar_url} alt=""/>
-          {trainer.full_name}
-        </li>
-      ))}
+      {topic.trainers.length ? (
+        topic.trainers.map((trainer, idx) => (
+          <li key={idx}>
+            <img src={trainer.avatar_url} alt=""/>
+            {trainer.full_name}
+          </li>
+        ))
+      ) : (
+        <li>Bądź pierwszym trenerem!</li>
+      )}
     </ul>
 
     <style jsx>{`

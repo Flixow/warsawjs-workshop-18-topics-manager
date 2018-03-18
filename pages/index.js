@@ -3,7 +3,7 @@ import initStore from '../utils/store'
 
 import MainLayout from '../layouts/Main'
 
-import {TopicCard, Input} from '../components'
+import {TopicCard, Input, Button, Wrapper} from '../components'
 
 import {createTopic, likeTopic, setMeAsTrainer} from '../actions/topics'
 
@@ -30,29 +30,74 @@ class Home extends React.Component {
 
     return (
       <MainLayout>
-        <form onSubmit={this.handleAddNewTopic}>
-          <Input
-            type="text"
-            placeholder="Dodaj nowy temat"
-            onChange={this.handleInputChange}
-            value={newTopicInput}
-          />
-          <button>Submit</button>
+        <section className='Intro u-pt- u-pb- u-ta-c'>
+          <h1>Stwórz Workshop!</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A est repudiandae architecto, ipsam natus.
+            Dicta impedit nihil nisi, facere a repellat recusandae architecto ipsam corporis aut aliquam iure sunt omnis.
+          </p>
+        </section>
+        <form
+          onSubmit={this.handleAddNewTopic}
+          className='NewTopicForm--Wrapper u-bg-yellow u-pt- u-pb- u-ta-c'
+        >
+          <div className="NewTopicForm">
+            <h4>Zgłoś propozycję warsztatów</h4>
+            <Input
+              type="text"
+              placeholder="Temat"
+              className='u-full'
+              onChange={this.handleInputChange}
+              value={newTopicInput}
+            />
+            <br/>
+            <div className='u-ta-r u-mt-'>
+              <Button>Prześlij</Button>
+            </div>
+          </div>
         </form>
 
-        {topics.map(topic => {
-          const canIBeTrainer = user.id && !topic.trainers.find(trainer => trainer.id === user.id)
+        <Wrapper>
+          <section>
+            <h2>Zgłoszone tematy</h2>
 
-          return (
-            <TopicCard
-              key={topic.id}
-              topic={topic}
-              likeIt={this.props.likeTopic}
-              setMeAsTrainer={this.props.setMeAsTrainer}
-              canIBeTrainer={canIBeTrainer}
-            />
-          )
-        })}
+            <ul className='TopicList'>
+              {topics.map(topic => {
+                const canIBeTrainer = user.id && !topic.trainers.find(trainer => trainer.id === user.id)
+
+                return (
+                  <li key={topic.id}>
+                    <TopicCard
+                      topic={topic}
+                      likeIt={this.props.likeTopic}
+                      setMeAsTrainer={this.props.setMeAsTrainer}
+                      canIBeTrainer={canIBeTrainer}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+        </Wrapper>
+
+        <style jsx>{`
+          .Intro p {
+            max-width: 700px;
+            display: inline-block;
+          }
+
+          .NewTopicForm {
+            width: 600px;
+            display: inline-block;
+          }
+
+          .TopicList {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+          }
+        `}</style>
       </MainLayout>
     )
   }

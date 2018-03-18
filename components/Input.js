@@ -1,19 +1,23 @@
 import React from 'react';
 
-const Input = ({...other}) => (
-  <label>
+const Input = ({className, ...other}) => (
+  <label
+    className={`
+      ${className ? className : ''}
+    `}
+  >
     <input type="text" {...other} />
 
     <style jsx>{`
       input {
-        border-radius: 4px;
         outline: 0;
-        border: 1px solid #8f8f8f;
-        padding: 3px 5px;
+        border: none;
+        padding: 8px 5px;
+        width: 100%;
       }
 
       input:focus {
-        border: 1px solid #91b8ff;
+        box-shadow:inset 0px 0px 0px 1px #91b8ff;
       }
     `}</style>
   </label>
