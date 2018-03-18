@@ -23,7 +23,7 @@ export default function(state = INITIAL_STATE, action) {
     case UPDATE_TOPIC:
       return {
         ...state,
-        list: state.list.map(topic => topic.id === action.topic.id ? action.topic : topic)
+        list: state.list.map(topic => topic.id === action.topic.id ? {...topic, ...action.topic} : topic)
       }
   default:
     return state

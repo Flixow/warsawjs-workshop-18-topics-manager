@@ -1,24 +1,11 @@
 import React from 'react';
 
-const Card = ({title, Footer}) => (
+const Card = ({title, children, Footer}) => (
   <div className='Card'>
     <h2>{title}</h2>
 
     <div className='Content'>
-      <ul>
-        <li>
-          <img src="https://placehold.it/50x50" alt=""/>
-          Daniel Siwek
-        </li>
-        <li>
-          <img src="https://placehold.it/50x50" alt=""/>
-          Daniel Siwek
-        </li>
-        <li>
-          <img src="https://placehold.it/50x50" alt=""/>
-          Daniel Siwek
-        </li>
-      </ul>
+      {children}
     </div>
 
     <footer>
@@ -36,25 +23,6 @@ const Card = ({title, Footer}) => (
       footer {
         border-top: 1px solid #9b9b9b;
         padding: 15px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      li {
-        display: flex;
-        align-items: center;
-        border: 1px solid #9b9b9b;
-        border-radius: 4px;
-        padding: 10px;
-        margin-top: 10px
-      }
-
-      li:fist-child {
-        margin-top: 0;
       }
 
       footer {

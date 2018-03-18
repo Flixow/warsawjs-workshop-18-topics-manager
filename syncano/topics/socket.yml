@@ -6,7 +6,7 @@ classes:
   topics:
     - name: title
       type: string
-    - name: treiners
+    - name: trainers
       type: array
     - name: likes
       type: integer
@@ -26,3 +26,6 @@ endpoints:
   likeIt:
     description: Give like for specific topic!
     file: likeIt.js
+  setUserAsTrainer:
+    description: Set user as a trainer of the specific topic!
+    file: setUserAsTrainer.js

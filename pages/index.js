@@ -5,7 +5,7 @@ import MainLayout from '../layouts/Main'
 
 import {TopicCard, Input} from '../components'
 
-import {createTopic, likeTopic} from '../actions/topics'
+import {createTopic, likeTopic, setMeAsTrainer} from '../actions/topics'
 
 class Home extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {topics} = this.props
+    const {topics, user} = this.props
     const {newTopicInput} = this.state
 
     return (
@@ -40,21 +40,28 @@ class Home extends React.Component {
           <button>Submit</button>
         </form>
 
-        {topics.map(topic => (
-          <TopicCard
-            key={topic.id}
-            topic={topic}
-            likeIt={this.props.likeTopic}
-          />
-        ))}
+        {topics.map(topic => {
+          const canIBeTrainer = !topic.trainers.find(trainer => trainer.id === user.id)
+          return (
+            <TopicCard
+              key={topic.id}
+              topic={topic}
+              likeIt={this.props.likeTopic}
+              setMeAsTrainer={this.props.setMeAsTrainer}
+              canIBeTrainer={canIBeTrainer}
+            />
+          )
+        })}
       </MainLayout>
     )
   }
 }
 
-export default withRedux(initStore, ({topics}) => ({
-  topics: topics.list
+export default withRedux(initStore, ({topics, user}) => ({
+  topics: topics.list,
+  user: user.profile,
 }), {
   createTopic,
   likeTopic,
+  setMeAsTrainer,
 })(Home)

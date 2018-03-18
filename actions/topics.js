@@ -23,6 +23,18 @@ export const likeTopic = id => async (dispatch, getState, {api}) => {
 
   dispatch({
     type: UPDATE_TOPIC,
+    topic: {
+      id: topic.id,
+      likes: topic.likes,
+    },
+  })
+}
+
+export const setMeAsTrainer = id => async (dispatch, getState, {api}) => {
+  const topic = await api.topics.setUserAsTrainer(id)
+
+  dispatch({
+    type: UPDATE_TOPIC,
     topic,
   })
 }

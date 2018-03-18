@@ -23,5 +23,9 @@ export default {
     create: data => syncano.post('topics/add', data),
     fetch: () => syncano.post('topics/fetch'),
     likeIt: id => syncano.post('topics/likeIt', {id}),
+    setUserAsTrainer: id => {
+      setToken()
+      return syncano.post('topics/setUserAsTrainer', {id})
+    },
   },
 }
