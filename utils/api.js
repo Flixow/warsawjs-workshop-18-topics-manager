@@ -9,14 +9,16 @@ const syncano = new Syncano('topic-manager')
 const setToken = () => {
   const token = window.localStorage.getItem('user_key')
   syncano.setToken(token)
+
+  return !!token
 }
 
 export default {
   user: {
     login: code => syncano.get('auth/login', {code}),
     fetchProfile: () => {
-      setToken()
-      return syncano.get('auth/getUser')
+      const isTokenSet = setToken()
+      return isTokenSet && syncano.get('auth/getUser')
     },
   },
   topics: {
