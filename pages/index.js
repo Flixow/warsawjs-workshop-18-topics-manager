@@ -41,7 +41,8 @@ class Home extends React.Component {
         </form>
 
         {topics.map(topic => {
-          const canIBeTrainer = !topic.trainers.find(trainer => trainer.id === user.id)
+          const canIBeTrainer = user.id && !topic.trainers.find(trainer => trainer.id === user.id)
+
           return (
             <TopicCard
               key={topic.id}
