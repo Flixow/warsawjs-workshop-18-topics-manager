@@ -1,4 +1,4 @@
-import {SET_TOPICS, PUSH_TOPIC} from './'
+import {SET_TOPICS, PUSH_TOPIC, UPDATE_TOPIC} from './'
 
 export const createTopic = topic => async (dispatch, getState, {api}) => {
   const newTopic = await api.topics.create(topic)
@@ -15,5 +15,14 @@ export const fetchTopics = () => async (dispatch, getState, {api}) => {
   dispatch({
     type: SET_TOPICS,
     topics,
+  })
+}
+
+export const likeTopic = id => async (dispatch, getState, {api}) => {
+  const topic = await api.topics.likeIt(id)
+
+  dispatch({
+    type: UPDATE_TOPIC,
+    topic,
   })
 }

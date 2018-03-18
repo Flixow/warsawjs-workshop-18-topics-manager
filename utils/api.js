@@ -22,5 +22,6 @@ export default {
   topics: {
     create: data => syncano.post('topics/add', data),
     fetch: () => syncano.post('topics/fetch'),
+    likeIt: id => syncano.post('topics/likeIt', {id}),
   },
 }

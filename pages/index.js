@@ -5,9 +5,9 @@ import MainLayout from '../layouts/Main'
 
 import {TopicCard, Input} from '../components'
 
-import {createTopic} from '../actions/topics'
+import {createTopic, likeTopic} from '../actions/topics'
 
-class Home extends React.PureComponent {
+class Home extends React.Component {
   state = {
     newTopicInput: ''
   }
@@ -43,7 +43,8 @@ class Home extends React.PureComponent {
         {topics.map(topic => (
           <TopicCard
             key={topic.id}
-            title={topic.title}
+            topic={topic}
+            likeIt={this.props.likeTopic}
           />
         ))}
       </MainLayout>
@@ -54,5 +55,6 @@ class Home extends React.PureComponent {
 export default withRedux(initStore, ({topics}) => ({
   topics: topics.list
 }), {
-  createTopic
+  createTopic,
+  likeTopic,
 })(Home)

@@ -1,11 +1,11 @@
 import {Card} from './'
 
-const TopicCard = ({title, treiners}) => (
+const TopicCard = ({topic, treiners, likeIt}) => (
   <Card
-    title={title}
+    title={topic.title}
     Footer={() => (
-      <div>
-        ♡ 23
+      <div onClick={() => likeIt(topic.id)}>
+        ♡ {topic.likes}
       </div>
     )}
   >

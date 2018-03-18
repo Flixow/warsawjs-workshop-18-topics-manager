@@ -1,6 +1,7 @@
 import {
   SET_TOPICS,
   PUSH_TOPIC,
+  UPDATE_TOPIC,
 } from '../actions'
 
 const INITIAL_STATE = {
@@ -18,6 +19,11 @@ export default function(state = INITIAL_STATE, action) {
       return {
         ...state,
         list: [action.topic, ...state.list]
+      }
+    case UPDATE_TOPIC:
+      return {
+        ...state,
+        list: state.list.map(topic => topic.id === action.topic.id ? action.topic : topic)
       }
   default:
     return state

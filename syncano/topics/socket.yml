@@ -23,3 +23,6 @@ endpoints:
   fetch:
     description: Fetch list of topics!
     file: fetch.js
+  likeIt:
+    description: Give like for specific topic!
+    file: likeIt.js
