@@ -14,6 +14,11 @@ const Button = ({children, ...other}) => (
         border: none;
         cursor: pointer;
       }
+
+      button[disabled] {
+        background: grey;
+        cursor: not-allowed;
+      }
     `}</style>
   </Fragment>
 );
